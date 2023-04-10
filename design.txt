@@ -1,0 +1,38 @@
+-the solution is based on the definition of two class :  
+
+*The Trajectory class represents a trajectory of points and has the following member functions:
+
+-Trajectory(const vector<Point>& points): a constructor that takes a vector of Point objects as an argument and constructs a Trajectory object with these points.
+~Trajectory(): a destructor for the Trajectory object.
+
+-length() const: a function that computes the length of the trajectory and returns it as a double.
+
+-speed() const: a function that computes the speed of the trajectory and returns it as a double.
+
+-distance(Point a, Point b) const: a function that computes the distance between two Point objects and returns it as a double.
+
+-get_data(): a function that returns a reference to the vector of Point objects that represents the trajectory.
+
+
+
+*The ClosestTrajectory class reads trajectories from a URL and finds the closest trajectories to a given reference trajectory. It has the following member functions:
+
+-ClosestTrajectory(const string& url_name): a constructor that takes a string argument representing a URL from which to read the trajectories.
+
+-~ClosestTrajectory(): a destructor for the ClosestTrajectory object.
+
+-lengthDifference(const Trajectory& t1, const Trajectory& t2): a function that computes the difference in length between two Trajectory objects and returns it as a double.
+
+-speedDifference(const Trajectory& t1, const Trajectory& t2): a function that computes the difference in speed between two Trajectory objects and returns it as a double.
+
+-readTrajectories(): a function that reads trajectories from the URL and returns a vector of Trajectory objects that represents the trajectories.
+
+-FindClosestTrajectories(Trajectory& reference, vector<Trajectory>& trajectories, string& metric_type): a function that finds the closest trajectories to a given reference trajectory. It takes three arguments: a reference Trajectory object, a vector of Trajectory objects to search, and a string representing the metric type to use for finding the closest trajectories. It returns a vector of Trajectory objects that represents the closest trajectories to the reference trajectory.
+
+-The ClosestTrajectory class also includes three private member functions that implement different algorithms for finding the closest trajectories, depending on the size of the dataset and the efficiency of the algorithm. These algorithms are:
+
+-FindClosestTrajectories_Pq(Trajectory& reference, vector<Trajectory>& trajectories, string& metric_type): a function that uses a priority queue to find the closest trajectories.
+
+-FindClosestTrajectories_Ms(Trajectory& reference, vector<Trajectory>& trajectories, string& metric_type): a function that uses a multiset to find the closest trajectories.
+
+-FindClosestTrajectories_FlannTree(Trajectory& reference, vector<Trajectory>& trajectories, string& metric_type): a function that uses the FLANN library to find the closest trajectories using a kd-tree data structure.
