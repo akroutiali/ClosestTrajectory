@@ -9,11 +9,7 @@
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include <flann/flann.hpp>
-//#include <flann/io/hdf5.h>
-#include <nanoflann.hpp>
 
-using namespace nanoflann;
-using namespace std::chrono;
 using namespace std;
 using namespace web::http;
 using namespace web::http::client;
@@ -76,7 +72,7 @@ public:
     vector<Point>& get_data();
 
 private:
-     mutable vector<Point> points_ ;
+     vector<Point> points_ ;
 };
 
 /**
@@ -131,9 +127,6 @@ class ClosestTrajectory {
         * @param metric_type The metric type to use for finding the closest trajectories.
         * 
         * @return A vector of Trajectory objects that represents the closest trajectories to the reference trajectory.
-        */
-        /*I implemented the algorithme findClosestTrajectories using different appproach and data structure
-        the taille of the Frame is responsable to choose the efficient algorithme since the time complexity of those algorithme are different
         */
         vector<Trajectory> FindClosestTrajectories( Trajectory& reference,  vector<Trajectory>& trajectories,  string& metric_type);
         vector<Trajectory> FindClosestTrajectories_Pq( Trajectory& reference,  vector<Trajectory>& trajectories,  string& metric_type);
